@@ -7,11 +7,11 @@ Será permitida a criação de um usuário com `name` e `username` bem
 
 [x] Listar todos os *todo*;
 
-[] Alterar o `title` e `deadline` de um *todo* existente;
+[ ] Alterar o `title` e `deadline` de um *todo* existente;
 
-[] Marcar um *todo* como feito;
+[ ] Marcar um *todo* como feito;
 
-[] Excluir um *todo*;
- 
+[ ] Excluir um *todo*;
+
 
 Tudo isso para cada usuário em específico (o `username` será passado pelo header).  
