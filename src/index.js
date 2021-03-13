@@ -44,7 +44,7 @@ app.post('/users', (request, response) => {
 app.use(checkIfUserAccountExists);
 
 app.post('/todos', (request, response) => {
-	const { title, description, deadline, id } = request.body;
+	const { title, description, deadline } = request.body;
 	const { user } = request;
 	const username = user.username;
 	const todoTask = {
@@ -62,18 +62,25 @@ app.post('/todos', (request, response) => {
 app.get('/todos', (request, response) => {
 	const { user } = request;
 	const username = user.username;
-	if (!user.todos) {
-		return response.json({ message: 'No todos found for user ' + username + '!' });
+	if (user.todos == []) {
+		return response.status(400).json({ error: 'No toDos found for user ' + username + '!' });
 	} else {
 		return response.json((user.todos));
 	}
 });
 
 app.put('/todos/:id', (request, response) => {
-	const { username } = request;
-	const { todos } = request.body;
-	todos.username = user;
-	return response.status(201).json({message: 'Task' + title + ' updated'});
+	const { user } = request;
+	const { id } = request.params;
+	const { title, description, deadline } = request.body;
+	const todo = user.todos.find(todo => todo.id === id);
+	if (!todo) {
+		return response.status(404).json({ error: 'ToDo not found!' });
+	}
+	todo.title = title;
+	todo.description = description;
+	todo.dealine = new Date(deadline);
+	return response.json({message: 'Task ' + title + ' updated!'}).send();
 });
 
 app.patch('/todos/:id/done', (request, response) => {
