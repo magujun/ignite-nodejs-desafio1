@@ -37,7 +37,7 @@ app.post('/users', (request, response) => {
 		name,
 		todos: []
 	});
-	return response.status(201).json({ message: 'User ' + name + ' created succesfully with username ' + username });
+	return response.status(201).json({ message: 'User ' + name + ' succesfully created with username ' + username });
 });
 
 // Use middleware check for all routes
@@ -72,8 +72,8 @@ app.get('/todos', (request, response) => {
 app.put('/todos/:id', (request, response) => {
 	const { username } = request;
 	const { todos } = request.body;
-  todos.username = user
-  return response.status(201).json({message: "Task" + title + ' updated'})
+	todos.username = user;
+	return response.status(201).json({message: 'Task' + title + ' updated'});
 });
 
 app.patch('/todos/:id/done', (request, response) => {
