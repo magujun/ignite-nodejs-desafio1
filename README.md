@@ -5,7 +5,7 @@
 Essa será uma aplicação para gerenciar tarefas (em inglês *todo*).  
 Será permitida a criação de um usuário com `name` e `username` bem como fazer o CRUD de *todos*:
 
-[x] -Criar um novo *todo*;
+[x] Criar um novo *todo*;
 
 [x] Listar todos os *todo*;
 
