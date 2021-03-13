@@ -1,8 +1,10 @@
+/* eslint-disable no-unused-vars */
 const express = require('express');
 const cors = require('cors');
 const { v4: uuidv4 } = require('uuid');
 const app = express();
 const users = [];
+const todoUpdate = [];
 
 app.use(cors());
 app.use(express.json());
@@ -72,15 +74,15 @@ app.get('/todos', (request, response) => {
 app.put('/todos/:id', (request, response) => {
 	const { user } = request;
 	const { id } = request.params;
-	const { title, description, deadline } = request.body;
+	const todoUpdate = request.body;
 	const todo = user.todos.find(todo => todo.id === id);
 	if (!todo) {
-		return response.status(404).json({ error: 'ToDo not found!' });
+		return response.status(404).json({ error: 'ToDo task not found!' });
 	}
-	todo.title = title;
-	todo.description = description;
-	todo.dealine = new Date(deadline);
-	return response.json({message: 'Task ' + title + ' updated!'}).send();
+	todo.title = todoUpdate.title;
+	todo.description = todoUpdate.description;
+	todo.deadline = new Date(todoUpdate.deadline);
+	return response.json({message: 'Task ' + todo.title + ' updated!'}).send();
 });
 
 app.patch('/todos/:id/done', (request, response) => {

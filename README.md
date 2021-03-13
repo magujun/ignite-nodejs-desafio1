@@ -9,7 +9,7 @@ Será permitida a criação de um usuário com `name` e `username` bem
 
 [x] Listar todos os *todo*;
 
-[ ] Alterar o `title` e `deadline` de um *todo* existente;
+[X] Alterar o `title` e `deadline` de um *todo* existente;
 
 [ ] Marcar um *todo* como feito;
 
@@ -22,21 +22,21 @@ Tudo isso para cada usuário em específico (o `username` será passado pelo hea
 
 ### Testes de usuários
 
-[ ] **Should be able to create a new user**
+[X] **Should be able to create a new user**
 
-[ ] **Should not be able to create a new user when username already exists**
+[X] **Should not be able to create a new user when username already exists**
 
 ### Testes de *todos*
 
 **Middleware**
 
-[ ] **Should be able to list all user's todos**
+[X] **Should be able to list all user's todos**
 
-[ ] **Should be able to create a new todo**
+[X] **Should be able to create a new todo**
 
-[ ] **Should be able to update a todo**
+[X] **Should be able to update a todo**
 
-[ ] **Should not be able to update a non existing todo**
+[X] **Should not be able to update a non existing todo**
 
 [ ] **Should be able to mark a todo as done**
 
