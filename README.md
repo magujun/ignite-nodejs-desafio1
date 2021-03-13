@@ -1,4 +1,6 @@
-# 💻 Rocketseat's Ignite - Trilha Node.js: Desafio 1 🚀
+# 💻 Rocketseat's Ignite - Trilha Node.js
+
+## Desafio 1 🚀
 
 Essa será uma aplicação para gerenciar tarefas (em inglês *todo*).  
 Será permitida a criação de um usuário com `name` e `username` bem como fazer o CRUD de *todos*:
@@ -15,3 +17,46 @@ Será permitida a criação de um usuário com `name` e `username` bem
 
 
 Tudo isso para cada usuário em específico (o `username` será passado pelo header).  
+
+## Testes
+
+### Testes de usuários
+
+[ ] **Should be able to create a new user**
+
+[ ] **Should not be able to create a new user when username already exists**
+
+### Testes de *todos*
+
+**Middleware**
+
+[ ] **Should be able to list all user's todos**
+
+[ ] **Should be able to create a new todo**
+
+[ ] **Should be able to update a todo**
+
+[ ] **Should not be able to update a non existing todo**
+
+[ ] **Should be able to mark a todo as done**
+
+[ ] **Should not be able to mark a non existing todo as done**
+
+[ ] **Should be able to delete a todo**
+
+[ ] **Should not be able to delete a non existing todo**
+ 
+    -------------------------------------------------
+      ---------------------------------------------
+        -----------------------------------------
+          -------------------------------------
+            ---------------------------------
+              -----------------------------
+                -------------------------
+                 ----------------------
+                   ------------------
+                     --------------
+                       ----------
+                         ------
+                           --
+                        
