@@ -82,7 +82,7 @@ app.put('/todos/:id', (request, response) => {
 	todo.title = todoUpdate.title;
 	todo.description = todoUpdate.description;
 	todo.deadline = new Date(todoUpdate.deadline);
-	return response.json({message: 'Task ' + id + ' updated!'}).send();
+	return response.json({message: 'Task "' + todo.title + '" updated!'}).send();
 });
 
 app.patch('/todos/:id', (request, response) => {
@@ -98,14 +98,24 @@ app.patch('/todos/:id', (request, response) => {
 		return response.status(400).json({ error: 'Task already completed!'});
 	}
 	if (done === false && todo.done === done) {
-		return response.status(400).json({ error: 'Task still pending!'});
+		return response.status(400).json({ error: 'Task still pending!' });
 	}
 	todo.done = done;
-	return response.json({message: 'Task ' + todo.title + ' status updated!'}).send();
+	const state = 'task pending!';
+	if(done === true) { const state = 'task completed!'; }
+	return response.json({message: todo.title + ' status updated: ' + state }).send();
 });
 
 app.delete('/todos/:id', (request, response) => {
-	// Complete aqui
+	const { user } = request;
+	const { id } = request.params;
+	const todo = user.todos.find(todo => todo.id === id);
+	const todoIndex = user.todos.findIndex(todo => todo.id === id);
+	if (todoIndex === -1) {
+		return response.status(404).json({ error: 'Task not found!' });
+	}
+	user.todos.splice(todoIndex, 1);
+	return response.json({message: 'Task "' + todo.title + '" deleted!'}).send();
 });
 
 module.exports = app;

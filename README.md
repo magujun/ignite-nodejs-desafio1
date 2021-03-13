@@ -11,9 +11,9 @@ Será permitida a criação de um usuário com `name` e `username` bem
 
 [X] Alterar o `title` e `deadline` de um *todo* existente;
 
-[ ] Marcar um *todo* como feito;
+[X] Marcar um *todo* como feito;
 
-[ ] Excluir um *todo*;
+[X] Excluir um *todo*;
 
 
 Tudo isso para cada usuário em específico (o `username` será passado pelo header).  
@@ -38,13 +38,13 @@ Tudo isso para cada usuário em específico (o `username` será passado pelo hea
 
 [X] **Should not be able to update a non existing todo**
 
-[ ] **Should be able to mark a todo as done**
+[X] **Should be able to mark a todo as done**
 
-[ ] **Should not be able to mark a non existing todo as done**
+[X] **Should not be able to mark a non existing todo as done**
 
-[ ] **Should be able to delete a todo**
+[X] **Should be able to delete a todo**
 
-[ ] **Should not be able to delete a non existing todo**
+[X] **Should not be able to delete a non existing todo**
  
     -------------------------------------------------
       ---------------------------------------------
