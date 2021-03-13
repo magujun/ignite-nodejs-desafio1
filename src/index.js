@@ -95,15 +95,15 @@ app.patch('/todos/:id', (request, response) => {
 	}
 	const done = status.done ? (status.done.toLowerCase() == 'true') : false;
 	if (done === true && todo.done === done) {
-		return response.status(400).json({ error: 'Task already completed!'});
+		return response.status(404).json({ error: 'Task already completed!'});
 	}
 	if (done === false && todo.done === done) {
-		return response.status(400).json({ error: 'Task still pending!' });
+		return response.status(404).json({ error: 'Task still pending!' });
 	}
 	todo.done = done;
 	const state = 'task pending!';
 	if(done === true) { const state = 'task completed!'; }
-	return response.json({message: todo.title + ' status updated: ' + state }).send();
+	return response.json({ message: todo.title + ' status updated: ' + state }).send();
 });
 
 app.delete('/todos/:id', (request, response) => {
@@ -115,7 +115,7 @@ app.delete('/todos/:id', (request, response) => {
 		return response.status(404).json({ error: 'Task not found!' });
 	}
 	user.todos.splice(todoIndex, 1);
-	return response.json({message: 'Task "' + todo.title + '" deleted!'}).send();
+	return response.status(204).json({ message: 'Task "' + todo.title + '" deleted!' }).send();
 });
 
 module.exports = app;
