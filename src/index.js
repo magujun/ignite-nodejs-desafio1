@@ -44,13 +44,14 @@ app.post('/users', (request, response) => {
 app.use(checkIfUserAccountExists);
 
 app.post('/todos', (request, response) => {
-	const { title, description, deadline } = request.body;
+	const { title, description, deadline, id } = request.body;
 	const { user } = request;
 	const username = user.username;
 	const todoTask = {
 		title,
 		description,
-		deadline,
+		deadline: new Date(deadline),
+		id: uuidv4(),
 		created_at: new Date(),
 		done: false
 	};
