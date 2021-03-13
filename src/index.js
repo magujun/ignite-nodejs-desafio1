@@ -4,7 +4,7 @@ const cors = require('cors');
 const { v4: uuidv4 } = require('uuid');
 const app = express();
 const users = [];
-const todoUpdate = [];
+// const todoUpdate = [];
 
 app.use(cors());
 app.use(express.json());
@@ -17,7 +17,7 @@ app.use(express.json());
  */
 
 // Middleware check user & todos
-function checkIfUserAccountExists(request, response, next) {
+function checkIfUserExists(request, response, next) {
 	const { username } = request.headers;
 	const user = users.find((user) => user.username === username);
 	if (!user) {
@@ -43,7 +43,7 @@ app.post('/users', (request, response) => {
 });
 
 // Use middleware check for all routes
-app.use(checkIfUserAccountExists);
+app.use(checkIfUserExists);
 
 app.post('/todos', (request, response) => {
 	const { title, description, deadline } = request.body;
@@ -77,16 +77,31 @@ app.put('/todos/:id', (request, response) => {
 	const todoUpdate = request.body;
 	const todo = user.todos.find(todo => todo.id === id);
 	if (!todo) {
-		return response.status(404).json({ error: 'ToDo task not found!' });
+		return response.status(404).json({ error: 'Task not found!' });
 	}
 	todo.title = todoUpdate.title;
 	todo.description = todoUpdate.description;
 	todo.deadline = new Date(todoUpdate.deadline);
-	return response.json({message: 'Task ' + todo.title + ' updated!'}).send();
+	return response.json({message: 'Task ' + id + ' updated!'}).send();
 });
 
-app.patch('/todos/:id/done', (request, response) => {
-	// Complete aqui
+app.patch('/todos/:id', (request, response) => {
+	const { user } = request;
+	const { id } = request.params;
+	const status = request.query;
+	const todo = user.todos.find(todo => todo.id === id);
+	if (!todo) {
+		return response.status(404).json({ error: 'Task not found!' });
+	}
+	const done = status.done ? (status.done.toLowerCase() == 'true') : false;
+	if (done === true && todo.done === done) {
+		return response.status(400).json({ error: 'Task already completed!'});
+	}
+	if (done === false && todo.done === done) {
+		return response.status(400).json({ error: 'Task still pending!'});
+	}
+	todo.done = done;
+	return response.json({message: 'Task ' + todo.title + ' status updated!'}).send();
 });
 
 app.delete('/todos/:id', (request, response) => {
