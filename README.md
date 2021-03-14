@@ -1,6 +1,6 @@
 # 💻 Rocketseat's Ignite - Trilha Node.js
 
-## Desafio 1 🚀
+## [Desafio 1](https://www.notion.so/Desafio-01-Conceitos-do-Node-js-59ccb235aecd43a6a06bf09a24e7ede8#12cccf7d02c24bd1a4be515a782ad00a) 🚀
 
 Essa será uma aplicação para gerenciar tarefas (em inglês *todo*).  
 Será permitida a criação de um usuário com `name` e `username` bem como fazer o CRUD de *todos*:
